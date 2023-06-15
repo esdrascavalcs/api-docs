@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: api-docs
+  description: A proposal for API documentation with Swagger UI and Springdoc
+  termsOfService: apidocs.esdrascavalcanti.com/terms
+  contact:
+    email: apidocs@esdrascavalcanti.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about api-docs
+  url: apidocs.esdrascavalcanti.com
+servers:
+  - url: https://localhost:8080
+tags:
+  - name: date
+    description: Features for date
+    externalDocs:
+      description: Find out more
+      url: apidocs.esdrascavalcanti.com
+paths:
+  /date:
+    get:
+      tags:
+        - date
+      summary: Return a current date
+      description: Return a current date in a Java LocalDate instance
+      operationId: getDate
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
